@@ -8,25 +8,14 @@ function scrollToSection() {
     });
 }
  
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
-    let nameError = document.getElementById("nameError");
+  function handleSubmit(event) {
+    event.preventDefault();
 
-    nameError.textContent = "";
+    const form = event.target;
 
-    let namePattern = /^[A-Za-z ]+$/;
-
-    if (!namePattern.test(name)) {
-        nameError.textContent = "Please enter a valid name (no numbers allowed)";
-        return;
-    }
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
+    let name = form.querySelector("[name='name']").value.trim();
+    let email = form.querySelector("[name='email']").value;
+    let message = form.querySelector("[name='message']").value;
 
     let namePattern = /^[A-Za-z ]+$/;
 
@@ -35,11 +24,9 @@ function scrollToSection() {
         return;
     }
 
-    // 🔥 CHECK ENVIRONMENT
     const isLocal = window.location.hostname === "localhost";
 
     if (isLocal) {
-        // ✅ LOCAL → SAVE TO DATABASE
         fetch("/submit", {
             method: "POST",
             headers: {
@@ -48,22 +35,27 @@ function scrollToSection() {
             body: JSON.stringify({ name, email, message })
         })
         .then(res => res.json())
-        .then(data => {
-            alert("Saved to database! Thank you 🤝");
-            document.getElementById("contactForm").reset();
-        });
-    } else {
-        // 🌐 GITHUB → SEND TO FORMSPREE
-        fetch("https://formspree.io/f/mlgpyqdv", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ name, email, message })
-        })
         .then(() => {
             alert("Form submitted successfully! Thank you 🤝");
-            document.getElementById("contactForm").reset();
+            form.reset();
+        });
+    } else {
+        const data = new FormData(form);
+
+        fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById("successMsg").textContent =
+                    "Form submitted successfully! Thank you 🤝";
+                form.reset();
+            }
         });
     }
-});
+}  
+ 
