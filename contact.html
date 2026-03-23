@@ -58,17 +58,17 @@
 
 <p>Have questions or suggestions? Reach out to us!</p>
 
-<form class="mt-3" action="https://formspree.io/f/mlgpyqdv" method="POST"></form>
+ <form class="mt-3" action="https://formspree.io/f/mlgpyqdv" method="POST">
 
-<input type="text" id="name" class="form-control mt-2" placeholder="Your Name" required>
-<small id="nameError" class="text-danger"></small>
+  <input type="text" name="name" class="form-control mt-2" placeholder="Your Name" required>
 
- <input type="text" name="name" class="form-control mt-2" placeholder="Your Name" required>
+  <input type="email" name="email" class="form-control mt-2" placeholder="Your Email" required>
 
-<input type="email" name="email" class="form-control mt-2" placeholder="Your Email" required>
+  <textarea name="message" class="form-control mt-2" rows="4" placeholder="Your Message"></textarea>
 
-<textarea name="message" class="form-control mt-2" rows="4" placeholder="Your Message"></textarea>
-<p id="successMsg" class="text-success mt-3"></p>
+  <button type="submit" class="btn btn-success mt-3">Submit</button>
+
+  <p id="successMsg" class="text-success mt-3"></p>
 
 </form>
 
