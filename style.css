@@ -10,9 +10,10 @@ h1, h2, h3 {
 }
 
 /* Hero Section */
-  .hero {
-    height: 60vh;   /* smaller height */
+   .hero {
+    width: 100%;
     padding: 60px 20px;
+   
     
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
     url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1');
@@ -88,22 +89,19 @@ footer {
 }
  
 .home-img {
-    width: 550px;      /* control size */
+    width: 100%;
+    max-width: 550px;
     height: auto;
-    display: block;
-    margin: 20px auto;
 }
+
 .highlight-text {
     font-size: 18px;
     color: #198754;
     font-weight: bold;
 }
  .about-img {
-    width: 850px;
-    max-width: 90%;
-    height: auto;
-    display: block;
-    margin: 20px auto;
+    width: 100%;
+    max-width: 850px;
 }
 h1, h2, h3 {
     font-weight: 600;
@@ -147,4 +145,12 @@ p {
   height: 300px;   /* increase this value */
   object-fit: cover;
 }
- 
+ html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
