@@ -7,9 +7,7 @@ function scrollToSection() {
         behavior: "smooth"
     });
 }
- document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
+ 
     let name = document.getElementById("name").value.trim();
     let email = document.getElementById("email").value;
     let message = document.getElementById("message").value;
