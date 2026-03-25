@@ -1,19 +1,21 @@
-function showTip() {
+ function showTip() {
     alert("💡 Go eco-friendly!");
     alert("💡 Carry a reusable bottle to reduce plastic waste!");
 }
-function scrollToSection() {
+ function scrollToSection() {
     document.getElementById("features").scrollIntoView({
         behavior: "smooth"
     });
-}
- 
-   function handleSubmit(event) {
+} 
+
+  function handleSubmit(event) {
     event.preventDefault();
 
     const form = event.target;
 
     let name = form.querySelector("[name='name']").value.trim();
+    let email = form.querySelector("[name='email']").value;
+    let message = form.querySelector("[name='message']").value;
 
     let namePattern = /^[A-Za-z ]+$/;
 
@@ -22,11 +24,30 @@ function scrollToSection() {
         return;
     }
 
-     const isLocal = 
-    window.location.hostname === "localhost" || 
-    window.location.hostname === "127.0.0.1";
-    if (!isLocal) {
-        // 🌐 GITHUB → FORMSPREE
+    const isLocal =
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1";
+
+    if (isLocal) {
+        // 🟢 LOCAL → SAVE TO DATABASE
+        fetch("/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ name, email, message })
+        })
+        .then(res => res.json())
+        .then(() => {
+            alert("Form submitted successfully! Thank you 🤝");
+            form.reset();
+        })
+        .catch(() => {
+            alert("Error saving data");
+        });
+
+    } else {
+        // 🔵 GITHUB → FORMSPREE
         const data = new FormData(form);
 
         fetch(form.action, {

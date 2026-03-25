@@ -76,11 +76,14 @@ footer {
     transform: scale(1.05); /* slightly smaller zoom */
 }
 
-
-.product-img {
+ 
+ .product-img {
     width: 100%;
+    max-width: 500px;   /* 🔥 control size */
     height: auto;
     object-fit: cover;
+    display: block;
+    margin: 0 auto;     /* center image */
 }
 
  .gallery-img {
@@ -99,7 +102,10 @@ footer {
     width: 100%;
     max-width: 550px;
     height: auto;
+    margin: 0 auto;   /* center */
+    display: block;
 }
+
 
 .highlight-text {
     font-size: 18px;
@@ -121,9 +127,11 @@ p {
     font-size: 16px;
     line-height: 1.6;
 }
- .about-top-img {
+img {
     width: 100%;
     height: auto;
+    display: block;
+    margin: 0 auto;   /* 🔥 THIS CENTERS IMAGES */
 }
 .card {
     transition: 0.3s ease;
@@ -144,9 +152,21 @@ img {
     width: 100%;
     height: auto;
     display: block;
+    margin: 0 auto;   /* 🔥 THIS CENTERS IMAGES */
 }
 
 .img-wrapper {
     overflow: hidden;
     border-radius: 10px;
 }
+@media (max-width: 768px) {
+    .about-img,
+    .home-img {
+        max-width: 100%;
+    }
+}
+.home-img {
+    display: block;
+    margin: 0 auto;
+}
+ 
