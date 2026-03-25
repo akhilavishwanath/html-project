@@ -22,8 +22,9 @@ function scrollToSection() {
         return;
     }
 
-    const isLocal = window.location.hostname === "localhost";
-
+     const isLocal = 
+    window.location.hostname === "localhost" || 
+    window.location.hostname === "127.0.0.1";
     if (!isLocal) {
         // 🌐 GITHUB → FORMSPREE
         const data = new FormData(form);
