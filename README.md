@@ -5,6 +5,14 @@ EcoLife is a modern and responsive environmental awareness website designed to p
 The website is built using HTML, CSS, Bootstrap, and JavaScript with a clean green-themed design focused on encouraging users to protect nature and adopt eco-conscious habits.
 
 ---
+# 🌐 Live Demo
+
+Experience the EcoLife website live here:
+
+👉 https://akhilavishwanath.github.io/html-project/
+
+The project is deployed using GitHub Pages and is accessible on both desktop and mobile devices.
+
 
 # 📌 Project Overview
 
